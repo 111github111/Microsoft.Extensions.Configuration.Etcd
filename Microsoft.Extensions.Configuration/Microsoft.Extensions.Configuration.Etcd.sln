@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Extensions.Config
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestEtcd", "TestEtcd\TestEtcd.csproj", "{FB788B5A-EE0C-4027-94F1-72B37E17E91B}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WriteEtcd", "WriteEtcd\WriteEtcd.csproj", "{BCE2C3AB-54C1-41A6-BFA9-15A00F786370}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{FB788B5A-EE0C-4027-94F1-72B37E17E91B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB788B5A-EE0C-4027-94F1-72B37E17E91B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB788B5A-EE0C-4027-94F1-72B37E17E91B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCE2C3AB-54C1-41A6-BFA9-15A00F786370}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCE2C3AB-54C1-41A6-BFA9-15A00F786370}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCE2C3AB-54C1-41A6-BFA9-15A00F786370}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCE2C3AB-54C1-41A6-BFA9-15A00F786370}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

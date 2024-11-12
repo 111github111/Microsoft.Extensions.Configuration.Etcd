@@ -1,0 +1,12 @@
+{
+  "MyItem": "myitem.value",
+  "MyConfigtion": {
+    "Redis": "redis...",
+    "SqlServer": "sqlserver...",
+    "Array": [ "1", "2", "3", "4", "5" ],
+    "Object": {
+      "Key": "test",
+      "Value": "test_test_test"
+    }
+  }
+}

@@ -12,30 +12,28 @@ namespace Etcd.Microsoft.Extensions.Configuration.Client
     {
         private readonly IEtcdClient _client;
         private readonly EtcdAuth _etcdAuth;
-        private readonly string _key;
 
         private string _token = null;
         private DateTime _recordTime = DateTime.Now;
         private TimeSpan _delayTime = TimeSpan.FromMinutes(5);
 
 
-        public EtcdKeyValueClient(IEtcdClient client, EtcdAuth etcdAuth, string key)
+        public EtcdKeyValueClient(IEtcdClient client, EtcdAuth etcdAuth)
         {
             _etcdAuth = etcdAuth;
             _client = client;
-            _key = key;
 
             CheckIsAuthenticated(true);
         }
 
 
-        public Dictionary<string, string?> GetAllKeys()
+        public Dictionary<string, string?> GetAllKeys(string key)
         {
 
             var dic = new Dictionary<string, string>();
 
             // 加载 etcd 上 指定的 key-value 项目
-            var strJson = _client.GetVal(_key, GetMetadata());
+            var strJson = _client.GetVal(key, GetMetadata());
             var values = JsonHelpers.ExtractValues(JsonDocument.Parse(strJson).RootElement, string.Empty);
             foreach (var item in values)
                 dic.TryAdd(item.key.TrimStart(':'), item.value);

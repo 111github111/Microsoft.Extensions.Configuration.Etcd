@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration.Etcd.Auth;
 
 namespace Etcd.Microsoft.Extensions.Configuration
 {
-    public class EtcdConfigurationSource : IConfigurationSource
+    public class EtcdConfigurationSource : FileConfigurationSource
     {
         private readonly EtcdAuth _etcdAuth;
         private readonly string _serviceUrl;
@@ -11,16 +11,17 @@ namespace Etcd.Microsoft.Extensions.Configuration
         public EtcdConfigurationSource(string serviceUrl, EtcdAuth etcdAuth, string key)
         {
             _serviceUrl = serviceUrl;
-            _etcdAuth = etcdAuth;   
+            _etcdAuth = etcdAuth;
             _key = key;
         }
 
-        public IConfigurationProvider Build(IConfigurationBuilder builder)
+        public override IConfigurationProvider Build(IConfigurationBuilder builder)
         {
             if (builder == null)
                 throw new ArgumentNullException(nameof(builder));
 
-            return new EtcdConfigurationProvider(_serviceUrl, _etcdAuth, _key);
+            EnsureDefaults(builder);
+            return new EtcdConfigurationProvider(this, _serviceUrl, _etcdAuth, _key);
         }
     }
 }
