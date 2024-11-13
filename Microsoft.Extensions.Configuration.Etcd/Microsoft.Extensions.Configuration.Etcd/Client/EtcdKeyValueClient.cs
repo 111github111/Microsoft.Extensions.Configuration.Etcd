@@ -27,24 +27,20 @@ namespace Microsoft.Extensions.Configuration.Etcd.Client
         }
 
 
-        public Dictionary<string, string?> GetAllKeys(string key)
+        public IDictionary<string, string> GetAllKeys(string key)
         {
-
-            var dic = new Dictionary<string, string>();
 
             // 加载 etcd 上 指定的 key-value 项目
             var strJson = _client.GetVal(key, GetMetadata());
-            var values = JsonHelpers.ExtractValues(JsonDocument.Parse(strJson).RootElement, string.Empty);
-            foreach (var item in values)
-                dic.TryAdd(item.key.TrimStart(':'), item.value);
+            return JsonHelpers.ExtractValues(strJson);
 
 
+            // var dic = new Dictionary<string, string>();
             // 加载 etcd 上所有的 key-values
             // var kvs = _client.GetRange("", GetMetadata()).Kvs.ToList();
             // foreach (var item in kvs)
             //     dic.TryAdd(item.Key.ToStringUtf8(), item.Value.ToStringUtf8());
-
-            return dic;
+            // return dic;
         }
 
 

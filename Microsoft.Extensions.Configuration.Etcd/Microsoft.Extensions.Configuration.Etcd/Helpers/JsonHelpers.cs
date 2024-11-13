@@ -1,9 +1,31 @@
 ﻿using System.Text.Json;
+using static Etcdserverpb.KV;
 
 namespace Microsoft.Extensions.Configuration.Etcd.Helpers
 {
     public class JsonHelpers
     {
+        /// <summary>json Options</summary>
+        private static readonly JsonDocumentOptions jsonOptions = new JsonDocumentOptions()
+        {
+            CommentHandling = JsonCommentHandling.Skip,
+            AllowTrailingCommas = true
+        };
+
+
+
+        /// <summary>提取 json 对象为 IDictionary 集合</summary>
+        /// <param name="strJson"></param>
+        /// <returns></returns>
+        public static IDictionary<string, string> ExtractValues(string strJson)
+        {
+            var dic = new Dictionary<string, string>();
+            var values = JsonHelpers.ExtractValues(JsonDocument.Parse(strJson, jsonOptions).RootElement, string.Empty);
+            foreach (var item in values)
+                dic.TryAdd(item.key.TrimStart(':'), item.value);
+            return dic;
+        }
+
         /// <summary>提取 json 对象为 IEnumerable 集合</summary>
         /// <param name="jsonElement"></param>
         /// <param name="prefix"></param>

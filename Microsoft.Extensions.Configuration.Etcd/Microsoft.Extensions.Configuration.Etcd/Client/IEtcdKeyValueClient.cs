@@ -6,7 +6,7 @@ namespace Microsoft.Extensions.Configuration.Etcd.Client
     public interface IEtcdKeyValueClient
     {
         /// <summary>获取所有 key-value</summary>
-        public Dictionary<string, string?> GetAllKeys(string key);
+        public IDictionary<string, string> GetAllKeys(string key);
 
         public void CheckIsAuthenticated(bool isFirst = false);
 
