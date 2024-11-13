@@ -14,7 +14,7 @@ appsettings.json
 example:
 ```
 builder.Configuration
-       .AddEtcd(new Credentials("root", "123456"), new EtcdSettings("http://127.0.0.1:2379"), "app1/production.json")
+       .AddEtcd("http://127.0.0.1:2379", new EtcdAuth("root", "123456"), "app1/production.json")
        .Build();
 ```
 
