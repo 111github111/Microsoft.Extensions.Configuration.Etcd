@@ -22,5 +22,5 @@ var myConfig = config.GetSection("MyConfigtion").Get<MyConfigtion>();
 Console.WriteLine();
 
 
-
-    Console.WriteLine("end------------");
+Thread.Sleep(int.MaxValue);
+Console.WriteLine("end------------");

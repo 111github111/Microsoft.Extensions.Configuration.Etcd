@@ -77,7 +77,7 @@ namespace Microsoft.Extensions.Configuration.Etcd
 
                         foreach (var item in keyValues)
                         {
-                            if (Data.ContainsKey(watch.Key))
+                            if (Data.ContainsKey(item.Key))
                                 Data[item.Key] = item.Value;    // 2. 之前已存在的 key, 更新
                             else
                                 Data.Add(item.Key, item.Value); // 3. 之前不存在的 key, 添加
