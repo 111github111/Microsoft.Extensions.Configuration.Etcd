@@ -1,4 +1,4 @@
-﻿using Etcd.Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration.Etcd;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Configuration.Etcd.Auth;
 using TestEtcd.Models;

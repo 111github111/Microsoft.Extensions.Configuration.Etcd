@@ -1,5 +1,5 @@
 ﻿using dotnet_etcd;
-using Etcd.Microsoft.Extensions.Configuration.Client;
+using Microsoft.Extensions.Configuration.Etcd.Client;
 using Google.Protobuf.WellKnownTypes;
 using Grpc.Core;
 using Microsoft.Extensions.Configuration;
@@ -8,7 +8,7 @@ using Microsoft.Extensions.Configuration.Etcd.Helpers;
 using System.Text.Json;
 using static Mvccpb.Event.Types;
 
-namespace Etcd.Microsoft.Extensions.Configuration
+namespace Microsoft.Extensions.Configuration.Etcd
 {
     public class EtcdConfigurationProvider : FileConfigurationProvider
     {

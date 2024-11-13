@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration.Etcd.Auth;
 using Microsoft.Extensions.Configuration.Etcd.Helpers;
 using System.Text.Json;
 
-namespace Etcd.Microsoft.Extensions.Configuration.Client
+namespace Microsoft.Extensions.Configuration.Etcd.Client
 {
     public class EtcdKeyValueClient : IEtcdKeyValueClient
     {

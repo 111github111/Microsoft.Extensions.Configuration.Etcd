@@ -1,7 +1,7 @@
 ﻿using dotnet_etcd;
 using Grpc.Core;
 
-namespace Etcd.Microsoft.Extensions.Configuration.Client
+namespace Microsoft.Extensions.Configuration.Etcd.Client
 {
     public interface IEtcdKeyValueClient
     {

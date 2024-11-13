@@ -1,7 +1,6 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Configuration.Etcd.Auth;
+﻿using Microsoft.Extensions.Configuration.Etcd.Auth;
 
-namespace Etcd.Microsoft.Extensions.Configuration
+namespace Microsoft.Extensions.Configuration.Etcd
 {
     public class EtcdConfigurationSource : FileConfigurationSource
     {

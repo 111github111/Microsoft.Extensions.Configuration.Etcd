@@ -4,7 +4,7 @@ using Google.Protobuf;
 using Grpc.Core;
 using Grpc.Net.Client;
 
-namespace EtcdBak
+namespace WriteEtcd
 {
     /// <summary>
     /// 当前 etcd 使用版本：v3.4.26
@@ -19,7 +19,7 @@ namespace EtcdBak
         /// </summary>
         public void By1_CreateRoot()
         {
-            var client = new EtcdClient("http://127.0.0.1:2379",configureChannelOptions: grpcOptions);
+            var client = new EtcdClient("http://127.0.0.1:2379", configureChannelOptions: grpcOptions);
 
             // 创建 root 用户
             {

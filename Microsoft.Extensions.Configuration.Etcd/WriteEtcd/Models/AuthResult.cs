@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace EtcdBak.Models
+namespace WriteEtcd.Models
 {
     // {"header":{"cluster_id":"14841639068965178418","member_id":"10276657743932975437","revision":"22","raft_term":"7"},"token":"dMQxzqYTUyrbPQpv.80"}
     public class AuthResult
