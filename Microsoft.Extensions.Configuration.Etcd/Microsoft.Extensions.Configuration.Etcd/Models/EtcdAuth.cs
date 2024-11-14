@@ -1,13 +1,13 @@
 ﻿using System;
 
-namespace Microsoft.Extensions.Configuration.Etcd.Auth
+namespace Microsoft.Extensions.Configuration.Etcd.Models
 {
     public class EtcdAuth
     {
         public EtcdAuth(string userName, string password)
         {
-            this.UserName = userName;
-            this.Password = password;
+            UserName = userName;
+            Password = password;
         }
 
 

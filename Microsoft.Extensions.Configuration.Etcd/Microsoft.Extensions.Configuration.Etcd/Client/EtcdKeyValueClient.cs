@@ -2,9 +2,8 @@
 using dotnet_etcd.interfaces;
 using Etcdserverpb;
 using Grpc.Core;
-using Microsoft.Extensions.Configuration.Etcd.Auth;
 using Microsoft.Extensions.Configuration.Etcd.Helpers;
-using System.Text.Json;
+using Microsoft.Extensions.Configuration.Etcd.Models;
 
 namespace Microsoft.Extensions.Configuration.Etcd.Client
 {

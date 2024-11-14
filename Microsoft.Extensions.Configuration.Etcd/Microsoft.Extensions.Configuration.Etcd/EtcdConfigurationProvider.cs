@@ -1,13 +1,9 @@
-﻿using dotnet_etcd;
+﻿using Grpc.Core;
+using dotnet_etcd;
 using Microsoft.Extensions.Configuration.Etcd.Client;
-using Google.Protobuf.WellKnownTypes;
-using Grpc.Core;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Configuration.Etcd.Auth;
 using Microsoft.Extensions.Configuration.Etcd.Helpers;
-using System.Text.Json;
+using Microsoft.Extensions.Configuration.Etcd.Models;
 using static Mvccpb.Event.Types;
-using Google.Type;
 
 namespace Microsoft.Extensions.Configuration.Etcd
 {
@@ -16,15 +12,16 @@ namespace Microsoft.Extensions.Configuration.Etcd
         private readonly object _locker = new object();
 
         private readonly IEtcdKeyValueClient _client;
+        private readonly EtcdOptions _etcdOptions;
         private readonly string _key;
 
 
 
-        public EtcdConfigurationProvider(EtcdConfigurationSource source, string serviceUrl, EtcdAuth etcdAuth, string key) : base(source)
+        public EtcdConfigurationProvider(EtcdConfigurationSource source, EtcdOptions _etcdOptions) : base(source)
         {
 
 
-            var etcdClient = new EtcdClient(serviceUrl, configureChannelOptions: s =>
+            var etcdClient = new EtcdClient(_etcdOptions.ServiceUrl, configureChannelOptions: s =>
             {
                 // ChannelCredentials.Insecure   // 基础认证, 选择这个
                 // ChannelCredentials.SecureSsl  // ssl/tls 认证, 选择这个
@@ -33,11 +30,11 @@ namespace Microsoft.Extensions.Configuration.Etcd
             });
 
 
-            _client = new EtcdKeyValueClient(etcdClient, etcdAuth);
-            _key = key;
+            _client = new EtcdKeyValueClient(etcdClient, _etcdOptions.Auth);
+            _key = _etcdOptions.Keys.First();
 
             // watch 监视
-            _client.Watch(key, OnWatchCallback);
+            _client.Watch(_key, OnWatchCallback);
         }
 
         /// <summary>默认加载 EtcdClient 请求的数据</summary>

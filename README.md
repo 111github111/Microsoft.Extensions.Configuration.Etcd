@@ -16,6 +16,17 @@ example:
 builder.Configuration
        .AddEtcd("http://127.0.0.1:2379", new EtcdAuth("root", "123456"), "app1/production.json")
        .Build();
+
+or
+
+builder.Configuration
+       .AddEtcd(options =>
+       {
+           options.ServiceUrl = "http://127.0.0.1:2379";
+           options.Auth = new EtcdAuth("root", "123456");
+           options.Keys.Add("app1/production.json");
+       })
+       .Build();
 ```
 
 use:

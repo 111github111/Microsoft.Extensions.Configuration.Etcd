@@ -1,17 +1,14 @@
-﻿using Microsoft.Extensions.Configuration.Etcd.Auth;
+﻿using Microsoft.Extensions.Configuration.Etcd.Models;
 
 namespace Microsoft.Extensions.Configuration.Etcd
 {
     public class EtcdConfigurationSource : FileConfigurationSource
     {
-        private readonly EtcdAuth _etcdAuth;
-        private readonly string _serviceUrl;
-        private readonly string _key;
-        public EtcdConfigurationSource(string serviceUrl, EtcdAuth etcdAuth, string key)
+        private readonly EtcdOptions _etcdOptions;
+
+        public EtcdConfigurationSource(EtcdOptions etcdOptions)
         {
-            _serviceUrl = serviceUrl;
-            _etcdAuth = etcdAuth;
-            _key = key;
+            _etcdOptions = etcdOptions;
         }
 
         public override IConfigurationProvider Build(IConfigurationBuilder builder)
@@ -19,8 +16,9 @@ namespace Microsoft.Extensions.Configuration.Etcd
             if (builder == null)
                 throw new ArgumentNullException(nameof(builder));
 
+
             EnsureDefaults(builder);
-            return new EtcdConfigurationProvider(this, _serviceUrl, _etcdAuth, _key);
+            return new EtcdConfigurationProvider(this, _etcdOptions);
         }
     }
 }
