@@ -9,6 +9,7 @@ using TestEtcd.Models;
 
 
 Console.WriteLine("start------------");
+Console.WriteLine();
 
 
 // 尝试使用配置的方式读取
@@ -25,8 +26,11 @@ var config = new ConfigurationBuilder()
 var myItem = config.GetSection("MyItem").Value;
 var myConfig = config.GetSection("MyConfigtion").Get<MyConfigtion>();
 
+Console.WriteLine($"myItem = {myItem}");
+Console.WriteLine($"myConfig.SqlServer = {myConfig!.SqlServer}");
+Console.WriteLine($"myConfig.Redis = {myConfig!.Redis}");
+
+
 Console.WriteLine();
-
-
-Thread.Sleep(int.MaxValue);
 Console.WriteLine("end------------");
+Thread.Sleep(int.MaxValue);
